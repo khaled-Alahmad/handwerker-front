@@ -1,0 +1,363 @@
+/* styles/Home.module.css */
+.container {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(rgba(30, 30, 30, 0.8), rgba(30, 30, 30, 0.8)),
+    url("../images/bg-hero.png"); /* replace with your background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  padding: 0 6rem;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.heroContent {
+  width: 100%;
+}
+
+.heroTitle {
+  margin-top: 6rem;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 4rem;
+  line-height: 1.2;
+  color: #2196f3;
+  margin-bottom: 1rem;
+  text-align: start;
+  max-width: 900px;
+}
+
+.hero p {
+  margin-top: 3rem;
+  text-align: start;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 47px;
+  max-width: 700px;
+  color: #ffffff;
+}
+
+.heroButton {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  text-decoration: none;
+  float: right;
+  background: #8fd14f;
+  border-radius: 40px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 42px;
+  color: #ffffff;
+  margin: 1rem 0rem;
+}
+
+.heroButton:hover {
+  background-color: #45a049;
+}
+
+/* styles/NavBar.module.css */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 6rem;
+  background-color: transparent;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.navLink {
+  text-decoration: none;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 75%;
+  color: #d9d9d9;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+}
+
+.menuIcon {
+  display: none;
+  cursor: pointer;
+}
+
+/* about css */
+.about {
+  padding: 4rem 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.aboutTitle {
+  margin: 0rem 0rem 4rem 0rem;
+  /* Über uns */
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 75px;
+  /* identical to box height */
+
+  color: #7cc139;
+}
+.aboutDescription {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 120%;
+  /* or 22px */
+  text-align: center;
+
+  color: #464646;
+
+  /* Rectangle 4 */
+
+  background: #f5f5f5;
+  border-radius: 60px;
+  padding: 0.5rem;
+}
+
+/* Home.module.css */
+
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  margin: 2rem 0;
+  overflow: hidden;
+  padding: 3rem 4rem;
+  background-color: #f5f5f5;
+}
+
+.sliderWrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.card {
+  flex: 0 0 calc((100% / 3) - 2rem); /* Adjusted to show exactly 3 cards */
+  margin: 0 1rem;
+  background-color: #f5f5f5;
+
+  border-radius: 10px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.cardImage {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease;
+  position: relative;
+  border-radius: 41px !important;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.blueOverlayLine {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) -10.26%,
+    #2196f3 87.25%
+  );
+  border-radius: 41px;
+}
+
+.greenOverlayLine {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) -11.58%,
+    #7cc139 84.85%
+  );
+  border-radius: 41px;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 0;
+  text-align: center;
+}
+
+.cardDescriptionContainer {
+  padding: 1rem;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  margin: 1rem 0 0;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 137%;
+  text-align: center;
+  color: #464646;
+}
+
+.card:hover .cardImage {
+  transform: scale(1.2);
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.navButton:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.navButton:disabled {
+  background: rgba(0, 0, 0, 0.2);
+  cursor: default;
+}
+
+.navButton:first-of-type {
+  left: 0;
+}
+
+.navButton:last-of-type {
+  right: 0;
+}
+
+@media (max-width: 768px) {
+  .sliderContainer {
+    padding: 0;
+  }
+
+  .card {
+    flex: 0 0 calc(100% - 2rem); /* Show only 1 card on mobile */
+    margin: 0 1rem;
+  }
+
+  .navButton {
+    padding: 0.5rem 0.5rem;
+  }
+  .heroTitle,
+  .aboutTitle {
+    font-size: 2.5rem;
+  }
+
+  .hero p,
+  .aboutDescription,
+  .cardDescription {
+    font-size: 1.25rem;
+  }
+  .main {
+    height: 100%;
+    padding-bottom: 2rem;
+    padding-inline: 2rem;
+  }
+  .heroButton {
+    font-size: 16px;
+    float: calc(100%);
+  }
+  .header,
+  .about {
+    padding: 1rem 2rem;
+  }
+  .about {
+    padding: 1rem;
+  }
+  .logo {
+    display: none;
+  }
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgba(30, 30, 30, 0.9);
+    filter: blur(10px);
+    flex-direction: column;
+    align-items: center;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .nav.open {
+    max-height: 300px;
+    filter: blur(0px);
+  }
+
+  .navLink {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .menuIcon {
+    display: block;
+  }
+}
