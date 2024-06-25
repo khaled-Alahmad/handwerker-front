@@ -7,6 +7,7 @@ import Hero from "@/pages/Hero/Hero";
 import About from "@/pages/About/About";
 import { useEffect, useState } from "react";
 import Services from "@/pages/Services/Services";
+import WhyUs from "@/pages/WhyUs/WhyUs";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
       <section className={styles.services}>
         <Services />
       </section>
+      <WhyUs />
     </div>
   );
 }
