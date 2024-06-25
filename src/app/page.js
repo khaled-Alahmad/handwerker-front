@@ -10,6 +10,7 @@ import Services from "@/pages/Services/Services";
 import WhyUs from "@/pages/WhyUs/WhyUs";
 import Testimonials from "@/pages/Testimonials/Testimonials";
 import FAQ from "@/pages/FAQ/FAQ";
+import ContactUs from "@/pages/ContactUs/ContactUs";
 
 export default function Home() {
   return (
@@ -36,6 +37,9 @@ export default function Home() {
       </section>
       <section className={styles.faq}>
         <FAQ />
+      </section>
+      <section className={styles.contactUs}>
+        <ContactUs />
       </section>
     </div>
   );

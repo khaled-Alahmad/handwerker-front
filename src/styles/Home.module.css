@@ -494,16 +494,22 @@
 }
 
 /* styles/FAQ.module.css */
-.faq {
+.faq,
+.contactUs {
   padding: 0rem 4rem;
   user-select: none;
 }
-.faqSection {
+.contactUs {
+  background-color: #f5f5f5;
+}
+.faqSection,
+.contactUsSection {
   padding: 2rem 0;
   text-align: center;
 }
 
-.faqSection h2 {
+.faqSection h2,
+.contactUsSection h2 {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
@@ -582,15 +588,65 @@
 .iconFac {
   margin-right: 0.5rem;
 }
+.contactUsInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.contactUsInfoImage,
+.contactUsInfoData {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+}
+.contactUsInfoImage {
+  display: flex;
+  align-items: center;
+}
+.contactUsInfoDataLocation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+.contactUsBgIcon {
+  border-radius: 50%;
+  background: rgba(18, 205, 212, 0.08);
+  padding: 0.7rem;
+  height: 74px;
+  width: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+.locationContent {
+  font-family: "Roboto";
+  font-style: normal;
+  width: 70%;
+  font-weight: 600;
+  font-size: 32px;
+  text-align: left;
+  line-height: 137%;
+  /* identical to box height, or 44px */
 
+  color: #464646;
+}
 @media (max-width: 768px) {
-  .faq {
+  .contactUsInfo {
+    flex-direction: column;
+  }
+  .faq,
+  .contactUs {
     padding: 2rem 2rem;
+  }
+  .contactUsInfoData {
+    margin-top: 2rem;
   }
   .faqQuestion {
     flex-direction: column-reverse;
     font-size: 30px;
-
   }
   .faqAnswer {
     padding: 0rem 1rem !important;
