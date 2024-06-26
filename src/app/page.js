@@ -11,6 +11,7 @@ import WhyUs from "@/pages/WhyUs/WhyUs";
 import Testimonials from "@/pages/Testimonials/Testimonials";
 import FAQ from "@/pages/FAQ/FAQ";
 import ContactUs from "@/pages/ContactUs/ContactUs";
+import Appointment from "@/pages/Appointment/Appointment";
 
 export default function Home() {
   return (
@@ -40,6 +41,9 @@ export default function Home() {
       </section>
       <section className={styles.contactUs}>
         <ContactUs />
+      </section>
+      <section className={styles.appointment}>
+        <Appointment />
       </section>
     </div>
   );
