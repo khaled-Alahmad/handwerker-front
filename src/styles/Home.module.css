@@ -34,7 +34,7 @@
 }
 
 .heroTitle {
-  margin-top: 6rem;
+  margin-top: 8rem;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 800;
@@ -891,12 +891,39 @@
 }
 
 @media (max-width: 768px) {
+  .formGroup input,
+  .formGroup select,
+  .formGroup textarea {
+    font-size: 22px;
+  }
+  .inactive {
+    font-size: 24px;
+  }
+  .faqSection h2,
+  .contactUsSection h2,
+  .appointmentSection h2,
+  .whyUsSection h2 ,
+  .testimonialsSection h2 {
+    font-size: 44px;
+  }
+  .copyright,
+  .bottomColumn a,
+  .bottomColumn p,
+  .contactItem p,
+  .navLinks a,
+  .locationContent {
+    font-size: 26px;
+  }
+  .formGroup label {
+    font-size: 14px;
+  }
   .contactItem p {
     width: 70%;
     text-align: left;
   }
   .submitButton {
     margin: 0 0;
+    font-size: 22px;
   }
   .formContainer {
     max-width: 100%;
