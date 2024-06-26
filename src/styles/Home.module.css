@@ -829,6 +829,9 @@
 
   color: #ffffff;
 }
+.formGroup textarea {
+  resize: none;
+}
 .bgColorFooter {
   padding: 10px;
   background: rgba(18, 205, 212, 0.08);

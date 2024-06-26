@@ -90,8 +90,10 @@ const Appointment = () => {
               <textarea
                 id="message"
                 name="message"
+                className="textarea"
                 rows="5"
                 required
+                aria-expanded={false}
                 placeholder="Nachricht"
               ></textarea>
             </div>
