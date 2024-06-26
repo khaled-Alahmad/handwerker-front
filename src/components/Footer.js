@@ -52,9 +52,7 @@ const Footer = () => {
                 <div className={styles.bgColorFooter}>
                   <Image src={emailIcon} alt="Email" width={32} height={32} />
                 </div>
-                <p style={{ textDecoration: "underline" }}>
-                  info@renamix-bauservice.de
-                </p>
+                <p>info@renamix-bauservice.de</p>
               </div>
             </div>
           </div>

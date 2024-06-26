@@ -70,14 +70,14 @@ const Appointment = () => {
               </select>
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="name">
+              <label htmlFor="address">
                 Adresse
                 <span className={styles.required}> *</span>
               </label>
               <input
                 type="text"
-                id="Adresse"
-                name="Adresse"
+                id="address"
+                name="address"
                 required
                 placeholder="Otr, Strabe, Hausnummer"
               />
@@ -95,7 +95,11 @@ const Appointment = () => {
                 placeholder="Nachricht"
               ></textarea>
             </div>
-            <button type="submit" className={styles.submitButton}>
+            <button
+              type="submit"
+              className={styles.heroButton}
+              style={{ maxWidth: "70%", margin: "auto", textAlign: "center" }}
+            >
               Termin vereinbaren
             </button>
           </form>

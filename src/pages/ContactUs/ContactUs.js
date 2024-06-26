@@ -18,19 +18,13 @@ const ContactUs = () => {
             alt=""
             width={`100%`}
             height={`100%`}
-            style={{ marginRight: "0.5rem" }}
+            // style={{ marginRight: "0.5rem" }}
           />
         </div>{" "}
         <div className={styles.contactUsInfoData}>
           <div className={styles.contactUsInfoDataLocation}>
             <span className={styles.contactUsBgIcon}>
-              <Image
-                src={locationIcon}
-                alt=""
-                width={74}
-                height={74}
-                style={{ marginRight: "0.5rem" }}
-              />
+              <Image src={locationIcon} alt="" width={64} height={64} />
             </span>
             <span className={styles.locationContent}>
               Mariendorfer Damm 151, 12107 Berlin
@@ -38,34 +32,17 @@ const ContactUs = () => {
           </div>
           <div className={styles.contactUsInfoDataLocation}>
             <span className={styles.contactUsBgIcon}>
-              <Image
-                src={phoneIcon}
-                alt=""
-                width={74}
-                height={74}
-                style={{ marginRight: "0.5rem" }}
-              />
+              <Image src={phoneIcon} alt="" width={24} height={24} />
             </span>
-            <span className={styles.locationContent}>
+            <a href="tel:+4917664103683" className={styles.locationContent}>
               +49 (0) 176 6410 3683
-            </span>
+            </a>
           </div>
           <div className={styles.contactUsInfoDataLocation}>
             <span className={styles.contactUsBgIcon}>
-              <Image
-                src={emailIcon}
-                alt=""
-                width={74}
-                height={74}
-                style={{ marginRight: "0.5rem" }}
-              />
+              <Image src={emailIcon} alt="" width={24} height={24} />
             </span>
-            <span
-              className={styles.locationContent}
-              style={{ textDecoration: "underline" }}
-            >
-              info@renamix-bauservice.de
-            </span>
+            <a className={styles.locationContent}>info@renamix-bauservice.de</a>
           </div>
           <a
             href="#termin"

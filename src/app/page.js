@@ -34,16 +34,16 @@ export default function Home() {
         <Services />
       </section>
       <WhyUs />
-      <section className={styles.testimonials}>
+      <section className={styles.testimonials} id="testimonials">
         <Testimonials />
       </section>
-      <section className={styles.faq}>
+      <section className={styles.faq} id="faq">
         <FAQ />
       </section>
-      <section className={styles.contactUs} id="kontakt">
+      <section className={styles.contactUs} id="contact">
         <ContactUs />
       </section>
-      <section className={styles.appointment}>
+      <section className={styles.appointment} id="appointment">
         <Appointment />
       </section>
       <Footer />

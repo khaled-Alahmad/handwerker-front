@@ -4,7 +4,7 @@ import styles from "@/styles/Home.module.css";
 
 export default function About() {
   return (
-    <section className={styles.about}>
+    <section className={styles.about} id="about">
       <h3 className={styles.aboutTitle}>Über uns</h3>
       <p className={styles.aboutDescription}>
         Wir sind RENAMIX BAUSERVICE GmbH, Ihr zuverlässiger Partner für alle

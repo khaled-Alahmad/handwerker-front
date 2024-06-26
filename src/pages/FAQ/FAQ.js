@@ -6,7 +6,7 @@ import arrowBottom from "../../../public/icons/arrow-bottom.svg";
 import arrowUp from "../../../public/icons/arrow-up.svg";
 
 const FAQ = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -46,16 +46,16 @@ const FAQ = () => {
                 <Image
                   src={arrowUp}
                   alt=""
-                  width={52}
-                  height={52}
+                  width={42}
+                  height={42}
                   style={{ marginRight: "0.5rem" }}
                 />
               ) : (
                 <Image
                   src={arrowBottom}
                   alt=""
-                  width={52}
-                  height={52}
+                  width={42}
+                  height={42}
                   style={{ marginRight: "0.5rem" }}
                 />
               )}
