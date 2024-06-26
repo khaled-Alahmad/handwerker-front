@@ -12,6 +12,7 @@ import Testimonials from "@/pages/Testimonials/Testimonials";
 import FAQ from "@/pages/FAQ/FAQ";
 import ContactUs from "@/pages/ContactUs/ContactUs";
 import Appointment from "@/pages/Appointment/Appointment";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -45,6 +46,7 @@ export default function Home() {
       <section className={styles.appointment}>
         <Appointment />
       </section>
+      <Footer />
     </div>
   );
 }

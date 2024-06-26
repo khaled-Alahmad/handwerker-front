@@ -150,7 +150,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 40px;
-  line-height: 120%;
+  line-height: 160%;
   /* or 22px */
   text-align: center;
 
@@ -744,7 +744,157 @@
   border-radius: 5px;
 }
 
+/* styles/Footer.module.css */
+
+.footer {
+  /* background-color: #333; */
+  background-image: url("../images/footer-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #d9d9d9;
+  padding: 2rem 4rem;
+  text-align: center;
+}
+
+.footerTop {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.footerColumn {
+  flex: 1;
+  min-width: 200px;
+  margin: 1rem;
+}
+
+.navLinks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navLinks li {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.navLinks a {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 75%;
+  /* or 27px */
+
+  color: #d9d9d9;
+  text-align: left;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navLinks a:hover {
+  color: #76b842;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.contactItem p {
+  margin-left: 0.5rem;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 137%;
+  /* identical to box height, or 44px */
+
+  color: #ffffff;
+}
+.bgColorFooter {
+  background: rgba(18, 205, 212, 0.08);
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.footerLine {
+  width: 80%;
+  margin: 0 auto 2rem;
+  border: 0;
+  border-top: 1px solid #444;
+}
+
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.bottomColumn {
+  flex: 1;
+  min-width: 200px;
+  margin: 1rem;
+  text-align: left;
+}
+
+.bottomColumn a,
+.bottomColumn p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 75%;
+  /* or 27px */
+
+  color: #d9d9d9;
+
+  display: block;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  transition: color 0.3s;
+}
+
+.bottomColumn a:hover {
+  color: #76b842;
+}
+
+.copyright {
+  padding: 2rem 4rem;
+
+  background: #2196f3;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+  color: #ffffff;
+}
+
 @media (max-width: 768px) {
+  .contactItem p {
+    width: 70%;
+    text-align: left;
+  }
   .submitButton {
     margin: 0 0;
   }
@@ -756,7 +906,9 @@
   }
   .faq,
   .contactUs,
-  .appointment {
+  .appointment,
+  .footer,
+  .copyright {
     padding: 2rem 2rem;
   }
   .contactUsInfoData {
