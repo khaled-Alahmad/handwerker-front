@@ -7,7 +7,7 @@ import styles from "@/styles/Home.module.css";
 
 export default function Hero() {
   return (
-    <main className={styles.main}>
+    <main className={styles.main} id="home">
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>

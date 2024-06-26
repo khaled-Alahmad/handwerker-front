@@ -30,7 +30,7 @@ export default function Home() {
       <Hero />
       <About />
 
-      <section className={styles.services}>
+      <section className={styles.services} id="leistungen">
         <Services />
       </section>
       <WhyUs />
@@ -40,7 +40,7 @@ export default function Home() {
       <section className={styles.faq}>
         <FAQ />
       </section>
-      <section className={styles.contactUs}>
+      <section className={styles.contactUs} id="kontakt">
         <ContactUs />
       </section>
       <section className={styles.appointment}>

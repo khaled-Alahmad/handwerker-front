@@ -14,25 +14,51 @@ export default function NavBar() {
     setIsOpen(!isOpen);
   };
 
+  const handleNavLinkClick = (e, targetId) => {
+    e.preventDefault();
+    document.getElementById(targetId).scrollIntoView({ behavior: "smooth" });
+    setIsOpen(false); // Close the menu if it's open
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
         <Image src={logo} alt="Renamix Logo" width={100} height={40} />
       </div>
       <nav className={`${styles.nav} ${isOpen ? styles.open : ""}`}>
-        <a href="#home" className={styles.navLink}>
+        <a
+          href="#home"
+          className={styles.navLink}
+          onClick={(e) => handleNavLinkClick(e, "home")}
+        >
           Home
         </a>
-        <a href="#leistungen" className={styles.navLink}>
+        <a
+          href="#leistungen"
+          className={styles.navLink}
+          onClick={(e) => handleNavLinkClick(e, "leistungen")}
+        >
           Leistungen
         </a>
-        <a href="#kontakt" className={styles.navLink}>
+        <a
+          href="#kontakt"
+          className={styles.navLink}
+          onClick={(e) => handleNavLinkClick(e, "kontakt")}
+        >
           Kontakt
         </a>
-        <a href="#impressum" className={styles.navLink}>
+        <a
+          href="#impressum"
+          className={styles.navLink}
+          onClick={(e) => handleNavLinkClick(e, "impressum")}
+        >
           Impressum
         </a>
-        <a href="#datenschutz" className={styles.navLink}>
+        <a
+          href="#datenschutz"
+          className={styles.navLink}
+          onClick={(e) => handleNavLinkClick(e, "datenschutz")}
+        >
           Datenschutzerklärung
         </a>
       </nav>
