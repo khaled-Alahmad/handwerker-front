@@ -911,12 +911,13 @@
   .inactive {
     font-size: 24px;
   }
+
   .faqSection h2,
   .contactUsSection h2,
   .appointmentSection h2,
   .whyUsSection h2,
   .testimonialsSection h2 {
-    font-size: 44px;
+    font-size: 2.2rem;
   }
   .copyright,
   .bottomColumn a,
@@ -955,7 +956,7 @@
   }
   .faqQuestion {
     flex-direction: column-reverse;
-    font-size: 30px;
+    font-size: 1.5rem;
   }
   .navLink:first-child {
     margin-top: 2rem;
@@ -965,7 +966,7 @@
   }
   .faqAnswer {
     padding: 0rem 1rem !important;
-    font-size: 26px;
+    font-size: 1.4rem;
   }
   .testimonial {
     flex: 1 1 100%;
@@ -996,7 +997,7 @@
   }
   .heroTitle,
   .aboutTitle {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   .hero p,
