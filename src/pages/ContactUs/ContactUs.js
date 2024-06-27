@@ -42,7 +42,12 @@ const ContactUs = () => {
             <span className={styles.contactUsBgIcon}>
               <Image src={emailIcon} alt="" width={24} height={24} />
             </span>
-            <a className={styles.locationContent}>info@renamix-bauservice.de</a>
+            <a
+              className={styles.locationContent}
+              href="mailto:info@renamix-bauservice.de"
+            >
+              info@renamix-bauservice.de
+            </a>
           </div>
           <a
             href="#termin"

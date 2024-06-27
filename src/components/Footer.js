@@ -6,6 +6,11 @@ import phoneIcon from "../../public/icons/phone-icon.svg";
 import emailIcon from "../../public/icons/email-icon.svg";
 
 const Footer = () => {
+  const handleNavLinkClick = (e, targetId) => {
+    e.preventDefault();
+    document.getElementById(targetId).scrollIntoView({ behavior: "smooth" });
+    // setIsOpen(false); // Close the menu if it's open
+  };
   return (
     <>
       <footer className={styles.footer}>
@@ -13,19 +18,61 @@ const Footer = () => {
           <div className={styles.footerColumn}>
             <ul className={styles.navLinks}>
               <li>
-                <a href="/">Home</a>
+                <a
+                  href="/#about"
+                  onClick={(e) => handleNavLinkClick(e, "about")}
+                >
+                  {" "}
+                  Über uns
+                </a>
               </li>
               <li>
-                <a href="/leistungen">Leistungen</a>
+                <a
+                  href="/#leistungen"
+                  onClick={(e) => handleNavLinkClick(e, "leistungen")}
+                >
+                  Leistungen
+                </a>
               </li>
               <li>
-                <a href="/kontakt">Kontakt</a>
+                <a
+                  href="/#whyUs"
+                  onClick={(e) => handleNavLinkClick(e, "whyUs")}
+                >
+                  {" "}
+                  Warum wir
+                </a>
               </li>
               <li>
-                <a href="/impressum">Impressum</a>
+                <a
+                  href="/#testimonials"
+                  onClick={(e) => handleNavLinkClick(e, "testimonials")}
+                >
+                  Kundenbewertungen
+                </a>
               </li>
               <li>
-                <a href="/datenschutz">Datenschutzerklärung</a>
+                <a href="/#faq" onClick={(e) => handleNavLinkClick(e, "faq")}>
+                  {" "}
+                  Warum wir
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/#contact"
+                  onClick={(e) => handleNavLinkClick(e, "contact")}
+                >
+                  kontakt
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/#appointment"
+                  onClick={(e) => handleNavLinkClick(e, "appointment")}
+                >
+                  {" "}
+                  Termin
+                </a>
               </li>
             </ul>
           </div>

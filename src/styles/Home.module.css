@@ -111,7 +111,7 @@
   font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
-  font-size: 26px;
+  font-size: 1.2rem;
   line-height: 75%;
   color: #d9d9d9;
 }
@@ -124,6 +124,7 @@
 .menuIcon {
   display: none;
   cursor: pointer;
+  z-index: 99;
 }
 
 /* about css */
@@ -516,23 +517,20 @@
 .faqSection,
 .contactUsSection,
 .appointmentSection {
-  padding: 2rem 0;
+  padding: 1rem 0;
   text-align: center;
 }
 
 .faqSection h2,
 .contactUsSection h2,
 .appointmentSection h2 {
-  font-family: "Roboto";
+  font-family: Roboto;
   font-style: normal;
   font-weight: 500;
   font-size: 3rem;
-  line-height: 75px;
-  /* identical to box height */
-
-  color: #7cc139;
-
-  margin-bottom: 2rem;
+  /* line-height: 75px; */
+  color: rgb(124, 193, 57);
+  margin-bottom: 1rem;
 }
 
 .faqItem {
@@ -659,7 +657,7 @@
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  font-size: 32px;
+  font-size: 1.2rem;
   line-height: 38px;
   /* identical to box height */
 
@@ -671,20 +669,19 @@
 }
 
 .formGroup {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .formGroup label {
   display: block;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
   text-align: left;
-
   font-family: "Roboto";
   font-style: normal;
   font-weight: 800;
-  font-size: 1.5rem;
-  line-height: 28px;
-
+  font-size: 1.4rem;
+  /* line-height: 0px; */
+  margin-bottom: 0.2rem;
   color: #475569;
 }
 .required {
@@ -694,13 +691,14 @@
 .formGroup select,
 .formGroup textarea {
   width: 100%;
-  padding: 0.8rem;
+  padding: 0.4rem 1rem;
 
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-size: 1.2rem;
-  line-height: 38px;
+  min-height: 47px;
+  line-height: 30px;
   /* identical to box height */
 
   color: #000000;
@@ -959,6 +957,12 @@
     flex-direction: column-reverse;
     font-size: 30px;
   }
+  .navLink:first-child {
+    margin-top: 2rem;
+  }
+  .navLink:last-child {
+    margin-bottom: 2rem;
+  }
   .faqAnswer {
     padding: 0rem 1rem !important;
     font-size: 26px;
@@ -1022,10 +1026,10 @@
   }
   .nav {
     position: absolute;
-    top: 100%;
+    top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(30, 30, 30, 0.9);
+    background-color: rgba(30, 30, 30, 1);
     filter: blur(10px);
     flex-direction: column;
     align-items: center;
@@ -1034,7 +1038,7 @@
   }
 
   .nav.open {
-    max-height: 300px;
+    max-height: 560px;
     filter: blur(0px);
   }
 

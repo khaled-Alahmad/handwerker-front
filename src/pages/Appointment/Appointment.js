@@ -91,7 +91,7 @@ const Appointment = () => {
                 id="message"
                 name="message"
                 className="textarea"
-                rows="5"
+                rows="3"
                 required
                 aria-expanded={false}
                 placeholder="Nachricht"
