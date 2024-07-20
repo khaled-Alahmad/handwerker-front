@@ -1,30 +1,78 @@
-"use client";
+import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import styles from "@/styles/Home.module.css";
-import Image from "next/image";
-import contactImage from "@/images/contact-us-image.png";
-import locationIcon from "../../../public/icons/location-icon.svg";
-import phoneIcon from "../../../public/icons/phone-icon.svg";
-import emailIcon from "../../../public/icons/email-icon.svg";
-import phoneBtnIcon from "@/images/phone.svg";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const Appointment = () => {
+  const router = useRouter();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    // If you have files to upload, make sure to append them to formData
+    // Example:
+    // const images = document.querySelector('input[name="images[]"]').files;
+    // for (let i = 0; i < images.length; i++) {
+    //   formData.append("images[]", images[i]);
+    // }
+
+    try {
+      const response = await axios
+        .post(
+          "https://handwerker.promotion22.com/api/orders/send_form",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
+        .then(() => {
+          toast.success("Termin erfolgreich vereinbart!");
+        })
+        .catch(() => {
+          toast.error("Fehler beim Senden des Formulars");
+        });
+      router.push("/");
+    } catch (error) {
+      toast.error("Netzwerkfehler");
+    }
+  };
+
   return (
     <section className={styles.appointmentSection}>
+      <ToastContainer />
       <h2>Jetzt Termin vereinbaren</h2>
       <div className={styles.appointmentContainer}>
         <div className={styles.formContainer}>
-          <form className={styles.appointmentForm}>
+          <form className={styles.appointmentForm} onSubmit={handleSubmit}>
             <div className={styles.formGroup}>
-              <label htmlFor="name">
-                Name
+              <label htmlFor="first_name">
+                Vorname
                 <span className={styles.required}> *</span>
               </label>
               <input
                 type="text"
-                id="name"
-                name="name"
+                id="first_name"
+                name="first_name"
                 required
-                placeholder="Name"
+                placeholder="Vorname"
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="last_name">
+                Nachname
+                <span className={styles.required}> *</span>
+              </label>
+              <input
+                type="text"
+                id="last_name"
+                name="last_name"
+                required
+                placeholder="Nachname"
               />
             </div>
             <div className={styles.formGroup}>
@@ -53,21 +101,17 @@ const Appointment = () => {
                 required
               />
             </div>
-
             <div className={styles.formGroup}>
-              <label htmlFor="service">
-                Anliegen
+              <label htmlFor="customer_date">
+                Datum
                 <span className={styles.required}> *</span>
               </label>
-              <select id="service" name="service" required>
-                <option className={styles.inactive} disabled>
-                  Elektriker
-                </option>
-                <option value="lighting">Beleuchtung</option>
-                <option value="cleaning">Gewerbereinigung</option>
-                <option value="flooring">Laminatverlegung</option>
-                <option value="maintenance">Hausmeisterservice</option>
-              </select>
+              <input
+                type="date"
+                id="customer_date"
+                name="customer_date"
+                required
+              />
             </div>
             <div className={styles.formGroup}>
               <label htmlFor="address">
@@ -83,18 +127,70 @@ const Appointment = () => {
               />
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="message">
-                Nachricht
+              <label htmlFor="city">
+                Stadt
+                <span className={styles.required}> *</span>
+              </label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                required
+                placeholder="Stadt"
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="state">
+                Staat
+                <span className={styles.required}> *</span>
+              </label>
+              <input
+                type="text"
+                id="state"
+                name="state"
+                required
+                placeholder="Staat"
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="zip_code">
+                PLZ
+                <span className={styles.required}> *</span>
+              </label>
+              <input
+                type="text"
+                id="zip_code"
+                name="zip_code"
+                required
+                placeholder="PLZ"
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="country">
+                Land
+                <span className={styles.required}> *</span>
+              </label>
+              <input
+                type="text"
+                id="country"
+                name="country"
+                required
+                placeholder="Land"
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="description">
+                Beschreibung
                 <span className={styles.required}> *</span>
               </label>
               <textarea
-                id="message"
-                name="message"
+                id="description"
+                name="description"
                 className="textarea"
                 rows="3"
                 required
                 aria-expanded={false}
-                placeholder="Nachricht"
+                placeholder="Beschreibung"
               ></textarea>
             </div>
             <button
@@ -106,9 +202,6 @@ const Appointment = () => {
             </button>
           </form>
         </div>
-        {/* <div className={styles.imageContainer}>
-          <Image src={contactImage} alt="Contact Us" />
-        </div> */}
       </div>
     </section>
   );
