@@ -21,7 +21,7 @@ export default function NavBar() {
   };
 
   return (
-    <header className={styles.header}>
+    <header className={styles.header} id="top">
       <div className={styles.logo}>
         <Image src={logo} alt="Renamix Logo" width={70} height={40} />
       </div>
@@ -66,14 +66,14 @@ export default function NavBar() {
           className={styles.navLink}
           onClick={(e) => handleNavLinkClick(e, "contact")}
         >
-         kontakt
+          kontakt
         </a>
         <a
           href="#appointment"
           className={styles.navLink}
           onClick={(e) => handleNavLinkClick(e, "appointment")}
         >
-         Termin
+          Termin
         </a>
       </nav>
       <div className={styles.menuIcon} onClick={toggleMenu}>

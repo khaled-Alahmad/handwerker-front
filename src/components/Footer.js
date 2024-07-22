@@ -11,6 +11,12 @@ const Footer = () => {
     document.getElementById(targetId).scrollIntoView({ behavior: "smooth" });
     // setIsOpen(false); // Close the menu if it's open
   };
+  const handleLocationClick = (address) => {
+    const googleMapsUrl = `https://www.google.com/maps?q=${encodeURIComponent(
+      address
+    )}`;
+    window.open(googleMapsUrl, "_blank");
+  };
   return (
     <>
       <footer className={styles.footer}>
@@ -87,19 +93,31 @@ const Footer = () => {
                     height={32}
                   />
                 </div>
-                <p>Mariendorfer Damm 151, 12107 Berlin</p>
+                <p
+                  onClick={() =>
+                    handleLocationClick("Mariendorfer Damm 151, 12107 Berlin")
+                  }
+                  style={{ cursor: "pointer" }}
+                >
+                  Mariendorfer Damm 151, 12107 Berlin
+                </p>
               </div>
               <div className={styles.contactItem}>
                 <div className={styles.bgColorFooter}>
                   <Image src={phoneIcon} alt="Phone" width={32} height={32} />
                 </div>
-                <p>+49 (0) 176 6410 3683</p>
+                <a href="tel:+4917664103683">+49 (0) 176 6410 3683</a>
               </div>
               <div className={styles.contactItem}>
                 <div className={styles.bgColorFooter}>
                   <Image src={emailIcon} alt="Email" width={32} height={32} />
                 </div>
-                <p>info@renamix-bauservice.de</p>
+                <a
+                  className={styles.locationContent}
+                  href="mailto:info@renamix-bauservice.de"
+                >
+                  info@renamix-bauservice.de
+                </a>
               </div>
             </div>
           </div>

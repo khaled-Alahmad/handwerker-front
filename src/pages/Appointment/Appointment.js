@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "@/styles/Home.module.css";
@@ -7,38 +7,48 @@ import { useRouter } from "next/navigation";
 
 const Appointment = () => {
   const router = useRouter();
+  const [isFormSubmitting, setIsFormSubmitting] = useState(false);
+  const [canSubmit, setCanSubmit] = useState(true);
+
+  useEffect(() => {
+    if (!canSubmit) {
+      const timer = setTimeout(() => {
+        setCanSubmit(true);
+      }, 60000); // 1 minute
+
+      return () => clearTimeout(timer);
+    }
+  }, [canSubmit]);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (!canSubmit) {
+      toast.warn("Sie können das Formular nur einmal pro Minute senden.");
+      return;
+    }
+
+    setIsFormSubmitting(true);
     const formData = new FormData(event.target);
 
-    // If you have files to upload, make sure to append them to formData
-    // Example:
-    // const images = document.querySelector('input[name="images[]"]').files;
-    // for (let i = 0; i < images.length; i++) {
-    //   formData.append("images[]", images[i]);
-    // }
-
     try {
-      const response = await axios
-        .post(
-          "https://handwerker.promotion22.com/api/orders/send_form",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        )
-        .then(() => {
-          toast.success("Termin erfolgreich vereinbart!");
-        })
-        .catch(() => {
-          toast.error("Fehler beim Senden des Formulars");
-        });
-      router.push("/");
+      await axios.post(
+        "https://handwerker.promotion22.com/api/orders/send_form",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      toast.success("Termin erfolgreich vereinbart!");
+      event.target.reset(); // Clear the form data
+      setCanSubmit(false); // Disable form submission for 1 minute
+      router.push("/#top");
     } catch (error) {
-      toast.error("Netzwerkfehler");
+      toast.error("Fehler beim Senden des Formulars");
+    } finally {
+      setIsFormSubmitting(false);
     }
   };
 
@@ -84,7 +94,7 @@ const Appointment = () => {
                 type="tel"
                 id="phone"
                 name="phone"
-                placeholder="Telefonnummer"
+                placeholder="+49xxxxxxxx"
                 required
               />
             </div>
@@ -107,8 +117,12 @@ const Appointment = () => {
                 <span className={styles.required}> *</span>
               </label>
               <input
-                type="date"
+                // type="datetime-local"
+                placeholder=""
                 id="customer_date"
+                type="text"
+                onFocus={(e) => (e.target.type = "date")}
+                onBlur={(e) => (e.target.type = "text")}
                 name="customer_date"
                 required
               />
@@ -197,8 +211,9 @@ const Appointment = () => {
               type="submit"
               className={styles.heroButton}
               style={{ maxWidth: "70%", margin: "auto", textAlign: "center" }}
+              disabled={isFormSubmitting}
             >
-              Termin vereinbaren
+              {isFormSubmitting ? "Bitte warten..." : "Termin vereinbaren"}
             </button>
           </form>
         </div>

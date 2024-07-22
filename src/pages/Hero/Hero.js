@@ -6,6 +6,11 @@ import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 
 export default function Hero() {
+  const handleNavLinkClick = (e, targetId) => {
+    e.preventDefault();
+    document.getElementById(targetId).scrollIntoView({ behavior: "smooth" });
+    // setIsOpen(false); // Close the menu if it's open
+  };
   return (
     <main className={styles.main} id="home">
       <section className={styles.hero}>
@@ -18,7 +23,11 @@ export default function Hero() {
             Zuhause. Erfahrene Profis, schnelle Reaktionszeiten und faire
             Preise.
           </p>
-          <a href="#termin" className={styles.heroButton}>
+          <a
+            href="#appointment"
+            className={styles.heroButton}
+            onClick={(e) => handleNavLinkClick(e, "appointment")}
+          >
             <Image
               src={phoneIcon}
               alt="Phone Icon"
