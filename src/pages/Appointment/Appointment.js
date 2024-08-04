@@ -9,6 +9,8 @@ const Appointment = () => {
   const router = useRouter();
   const [isFormSubmitting, setIsFormSubmitting] = useState(false);
   const [canSubmit, setCanSubmit] = useState(true);
+  const [selectedImages, setSelectedImages] = useState([]);
+  const [imagePreviews, setImagePreviews] = useState([]);
 
   useEffect(() => {
     if (!canSubmit) {
@@ -20,6 +22,19 @@ const Appointment = () => {
     }
   }, [canSubmit]);
 
+  const handleImageChange = (e) => {
+    const files = Array.from(e.target.files);
+    setSelectedImages(files);
+    const previews = files.map((file) => URL.createObjectURL(file));
+    setImagePreviews(previews);
+  };
+
+  const handleRemoveImage = (index) => {
+    const newPreviews = [...imagePreviews];
+    newPreviews.splice(index, 1);
+    setImagePreviews(newPreviews);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -30,6 +45,10 @@ const Appointment = () => {
 
     setIsFormSubmitting(true);
     const formData = new FormData(event.target);
+
+    selectedImages.forEach((image, i) => {
+      formData.append(`images[${i}]`, image);
+    });
 
     try {
       await axios.post(
@@ -45,6 +64,8 @@ const Appointment = () => {
       event.target.reset(); // Clear the form data
       setCanSubmit(false); // Disable form submission for 1 minute
       router.push("/#top");
+      setSelectedImages([]);
+      setImagePreviews([]);
     } catch (error) {
       toast.error("Fehler beim Senden des Formulars");
     } finally {
@@ -117,7 +138,6 @@ const Appointment = () => {
                 <span className={styles.required}> *</span>
               </label>
               <input
-                // type="datetime-local"
                 placeholder=""
                 id="customer_date"
                 type="text"
@@ -206,6 +226,35 @@ const Appointment = () => {
                 aria-expanded={false}
                 placeholder="Beschreibung"
               ></textarea>
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="images">Bilder</label>
+              <input
+                type="file"
+                id="images"
+                name="images"
+                accept="image/*"
+                multiple
+                onChange={handleImageChange}
+                style={{ display: "none" }}
+              />
+              <label htmlFor="images" className={styles.customFileInput}>
+                Bilder auswählen...
+              </label>
+            </div>
+            <div className={styles.imagePreviewContainer}>
+              {imagePreviews.map((preview, index) => (
+                <div key={index} className={styles.imagePreview}>
+                  <img src={preview} alt={`Preview ${index}`} />
+                  <button
+                    type="button"
+                    className={styles.removeImageButton}
+                    onClick={() => handleRemoveImage(index)}
+                  >
+                    &times;
+                  </button>
+                </div>
+              ))}
             </div>
             <button
               type="submit"
