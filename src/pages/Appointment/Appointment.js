@@ -24,9 +24,14 @@ const Appointment = () => {
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
-    setSelectedImages(files);
-    const previews = files.map((file) => URL.createObjectURL(file));
-    setImagePreviews(previews);
+
+    // دمج الصور الجديدة مع الصور القديمة
+    const newSelectedImages = [...selectedImages, ...files];
+    setSelectedImages(newSelectedImages);
+
+    // دمج العروض المصغرة الجديدة مع العروض المصغرة القديمة
+    const newPreviews = files.map((file) => URL.createObjectURL(file));
+    setImagePreviews((prevPreviews) => [...prevPreviews, ...newPreviews]);
   };
 
   const handleRemoveImage = (index) => {
@@ -43,23 +48,46 @@ const Appointment = () => {
       return;
     }
 
+    const date = event.target.customer_date.value;
+    const timeStart = event.target.customer_date_start.value;
+    const timeEnd = event.target.customer_date_end.value;
+
+    // console.log("Datum:", date);
+    // console.log("Start Time:", timeStart);
+    // console.log("End Time:", timeEnd);
+
+    if (!date || !timeStart || !timeEnd) {
+      toast.error("Bitte füllen Sie alle erforderlichen Felder aus.");
+      return;
+    }
+
     setIsFormSubmitting(true);
     const formData = new FormData(event.target);
+
+    const customerDateTimeStart = `${date} ${timeStart}:00`;
+    const customerDateTimeEnd = `${date} ${timeEnd}:00`;
+
+    formData.set("customer_date", customerDateTimeStart);
+    formData.set("customer_date_end", customerDateTimeEnd);
 
     selectedImages.forEach((image, i) => {
       formData.append(`images[${i}]`, image);
     });
 
     try {
-      await axios.post(
-        "https://handwerker.promotion22.com/api/orders/send_form",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios
+        .post(
+          "https://handwerker.promotion22.com/api/orders/send_form",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
+        .catch((err) => console.log(err));
+
+      console.log("Response:", response);
       toast.success("Termin erfolgreich vereinbart!");
       event.target.reset(); // Clear the form data
       setCanSubmit(false); // Disable form submission for 1 minute
@@ -67,6 +95,10 @@ const Appointment = () => {
       setSelectedImages([]);
       setImagePreviews([]);
     } catch (error) {
+      console.error(
+        "Error:",
+        error.response ? error.response.data : error.message
+      );
       toast.error("Fehler beim Senden des Formulars");
     } finally {
       setIsFormSubmitting(false);
@@ -122,14 +154,14 @@ const Appointment = () => {
             <div className={styles.formGroup}>
               <label htmlFor="email">
                 Email
-                <span className={styles.required}> *</span>
+                {/* <span className={styles.required}> *</span> */}
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 placeholder="Email"
-                required
+                // required
               />
             </div>
             <div className={styles.formGroup}>
@@ -140,12 +172,49 @@ const Appointment = () => {
               <input
                 placeholder=""
                 id="customer_date"
-                type="text"
-                onFocus={(e) => (e.target.type = "date")}
-                onBlur={(e) => (e.target.type = "text")}
+                type="date"
+                // onFocus={(e) => (e.target.type = "datetime-local")}
+                // onBlur={(e) => (e.target.type = "text")}
                 name="customer_date"
                 required
               />
+            </div>
+            <div
+              className={styles.formGroup}
+              style={{ display: "flex", flexDirection: "row" }}
+            >
+              <div style={{ width: "50%" }}>
+                <label htmlFor="customer_date">
+                  From
+                  <span className={styles.required}> *</span>
+                </label>
+                <input
+                  placeholder=""
+                  id="customer_date_start"
+                  type="time"
+                  // type="datetime-local"
+                  // onFocus={(e) => (e.target.type = "datetime-local")}
+                  // onBlur={(e) => (e.target.type = "text")}
+                  name="customer_date_start"
+                  required
+                />
+              </div>
+              <div style={{ width: "50%", marginLeft: "1rem" }}>
+                <label htmlFor="customer_date">
+                  To
+                  <span className={styles.required}> *</span>
+                </label>
+                <input
+                  placeholder=""
+                  id="customer_date_end"
+                  type="time"
+                  // type="datetime-local"
+                  // onFocus={(e) => (e.target.type = "datetime-local")}
+                  // onBlur={(e) => (e.target.type = "text")}
+                  name="customer_date_end"
+                  required
+                />
+              </div>
             </div>
             <div className={styles.formGroup}>
               <label htmlFor="address">
@@ -215,14 +284,14 @@ const Appointment = () => {
             <div className={styles.formGroup}>
               <label htmlFor="description">
                 Beschreibung
-                <span className={styles.required}> *</span>
+                {/* <span className={styles.required}> *</span> */}
               </label>
               <textarea
                 id="description"
                 name="description"
                 className="textarea"
                 rows="3"
-                required
+                // required
                 aria-expanded={false}
                 placeholder="Beschreibung"
               ></textarea>
