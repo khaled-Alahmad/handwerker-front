@@ -84,11 +84,11 @@ const Appointment = () => {
               "Content-Type": "multipart/form-data",
             },
           }
-        )
-        .catch((err) => console.log(err));
+        ).then(res=>      toast.success("Termin erfolgreich vereinbart!")
+      )
+        .catch((err) => {console.log(err);toast.error("Error!")});
 
       console.log("Response:", response);
-      toast.success("Termin erfolgreich vereinbart!");
       event.target.reset(); // Clear the form data
       setCanSubmit(false); // Disable form submission for 1 minute
       router.push("/#top");
