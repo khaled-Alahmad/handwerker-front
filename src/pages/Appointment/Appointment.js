@@ -77,7 +77,7 @@ const Appointment = () => {
     try {
       const response = await axios
         .post(
-          "https://handwerker.promotion22.com/api/orders/send_form",
+          "https://backend.ihr-handwerkers.com/api/orders/send_form",
           formData,
           {
             headers: {

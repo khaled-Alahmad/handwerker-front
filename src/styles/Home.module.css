@@ -12,7 +12,7 @@
   justify-content: center;
   height: 100vh;
   background: linear-gradient(rgba(30, 30, 30, 0.8), rgba(30, 30, 30, 0.8)),
-    url("../images/bg-hero.png"); /* replace with your background image */
+    url("../images/bg-hero.webp"); /* replace with your background image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
