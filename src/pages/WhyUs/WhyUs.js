@@ -25,9 +25,10 @@ const WhyUs = () => {
     },
     {
       id: 4,
-      icon: "/icons/fair-prices.svg", // Adjust the path to your icon
-      title: "Faire Preise",
-      description: "Wir bieten transparente und wettbewerbsfähige Preise.",
+      icon: "/icons/certificate.png", // Adjust the path to your icon
+      title: "Qualitätsgarantie",
+      description:
+        "Wir garantieren eine hochwertige Ausführung aller Arbeiten.",
     },
   ];
 

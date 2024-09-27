@@ -99,16 +99,17 @@ const Footer = () => {
                   }
                   style={{ cursor: "pointer" }}
                 >
-                  Mariendorfer Damm 151, 12107 Berlin
+                  Mariendorfer Damm 151,
+                  <br /> 12107 Berlin
                 </p>
               </div>
               <div className={styles.contactItem}>
                 <div className={styles.bgColorFooter}>
                   <Image src={phoneIcon} alt="Phone" width={32} height={32} />
                 </div>
-                <a href="tel:+4917664103683">+49 (0) 176 6410 3683</a>
+                <a href="tel:+4917664103683"> WhatsApp +4917664103683</a>
               </div>
-              <div className={styles.contactItem}>
+              <div className={styles.contactItem} style={{ width: "100%" }}>
                 <div className={styles.bgColorFooter}>
                   <Image src={emailIcon} alt="Email" width={32} height={32} />
                 </div>
@@ -116,7 +117,7 @@ const Footer = () => {
                   className={styles.locationContent}
                   href="mailto:info@renamix-bauservice.de"
                 >
-                  info@renamix-bauservice.de
+                  info@telefone-kontakt.de
                 </a>
               </div>
             </div>

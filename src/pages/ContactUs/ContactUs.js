@@ -51,7 +51,7 @@ const ContactUs = () => {
               <Image src={phoneIcon} alt="" width={24} height={24} />
             </span>
             <a href="tel:+4917664103683" className={styles.locationContent}>
-              +49 (0) 176 6410 3683
+            WhatsApp +4917664103683 
             </a>
           </div>
           <div className={styles.contactUsInfoDataLocation}>
@@ -62,7 +62,7 @@ const ContactUs = () => {
               className={styles.locationContent}
               href="mailto:info@renamix-bauservice.de"
             >
-              info@renamix-bauservice.de
+              info@telefone-kontakt.de
             </a>
           </div>
           <a

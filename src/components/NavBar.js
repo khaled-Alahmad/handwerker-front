@@ -54,13 +54,7 @@ export default function NavBar() {
         >
           Kundenbewertungen
         </a>
-        <a
-          href="#faq"
-          className={styles.navLink}
-          onClick={(e) => handleNavLinkClick(e, "faq")}
-        >
-          Warum wir
-        </a>
+
         <a
           href="#contact"
           className={styles.navLink}

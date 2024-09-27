@@ -84,9 +84,12 @@ const Appointment = () => {
               "Content-Type": "multipart/form-data",
             },
           }
-        ).then(res=>      toast.success("Termin erfolgreich vereinbart!")
-      )
-        .catch((err) => {console.log(err);toast.error("Error!")});
+        )
+        .then((res) => toast.success("Termin erfolgreich vereinbart!"))
+        .catch((err) => {
+          console.log(err);
+          toast.error("Error!");
+        });
 
       console.log("Response:", response);
       event.target.reset(); // Clear the form data
@@ -185,7 +188,7 @@ const Appointment = () => {
             >
               <div style={{ width: "50%" }}>
                 <label htmlFor="customer_date">
-                  From
+                  Von
                   <span className={styles.required}> *</span>
                 </label>
                 <input
@@ -201,7 +204,7 @@ const Appointment = () => {
               </div>
               <div style={{ width: "50%", marginLeft: "1rem" }}>
                 <label htmlFor="customer_date">
-                  To
+                  Bis
                   <span className={styles.required}> *</span>
                 </label>
                 <input
@@ -226,12 +229,12 @@ const Appointment = () => {
                 id="address"
                 name="address"
                 required
-                placeholder="Otr, Strabe, Hausnummer"
+                placeholder="Strabe, Hausnummer"
               />
             </div>
             <div className={styles.formGroup}>
               <label htmlFor="city">
-                Stadt
+                Straße
                 <span className={styles.required}> *</span>
               </label>
               <input
@@ -239,12 +242,12 @@ const Appointment = () => {
                 id="city"
                 name="city"
                 required
-                placeholder="Stadt"
+                placeholder="straße"
               />
             </div>
             <div className={styles.formGroup}>
               <label htmlFor="state">
-                Staat
+                Stadt
                 <span className={styles.required}> *</span>
               </label>
               <input
@@ -252,7 +255,7 @@ const Appointment = () => {
                 id="state"
                 name="state"
                 required
-                placeholder="Staat"
+                placeholder="Stadt"
               />
             </div>
             <div className={styles.formGroup}>
