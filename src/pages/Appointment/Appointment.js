@@ -69,6 +69,9 @@ const Appointment = () => {
 
     formData.set("customer_date", customerDateTimeStart);
     formData.set("customer_date_end", customerDateTimeEnd);
+    formData.set("type", "individual");
+    formData.set("gender", "male");
+
 
     selectedImages.forEach((image, i) => {
       formData.append(`images[${i}]`, image);
