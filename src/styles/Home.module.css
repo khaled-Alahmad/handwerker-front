@@ -12,7 +12,8 @@
   justify-content: center;
   height: 100vh;
   background: linear-gradient(rgba(30, 30, 30, 0.8), rgba(30, 30, 30, 0.8)),
-    url("../images/bg-hero.webp"); /* replace with your background image */
+    url("../images/bg-hero.webp");
+  /* replace with your background image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -135,6 +136,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .aboutTitle {
   margin: 0rem 0rem 4rem 0rem;
   /* Über uns */
@@ -148,6 +150,7 @@
 
   color: #7cc139;
 }
+
 .aboutDescription {
   font-family: "Roboto";
   font-style: normal;
@@ -185,12 +188,14 @@
 }
 
 .card {
-  flex: 0 0 calc((100% / 3) - 2rem); /* Adjusted to show exactly 3 cards */
+  flex: 0 0 calc((100% / 3) - 2rem);
+  /* Adjusted to show exactly 3 cards */
   margin: 1rem 1rem;
   background-color: #f5f5f5;
   padding: 2rem 0rem;
   /* border-radius: 10px; */
-  overflow: hidden; /* Ensure the image stays within the card's border radius */
+  overflow: hidden;
+  /* Ensure the image stays within the card's border radius */
   transition: transform 0.3s ease;
   position: relative;
 }
@@ -218,20 +223,16 @@
 }
 
 .blueOverlayLine {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0) -10.26%,
-    #2196f3 87.25%
-  );
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0) -10.26%,
+      #2196f3 87.25%);
   border-radius: 20px;
 }
 
 .greenOverlayLine {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0) -11.58%,
-    #7cc139 84.85%
-  );
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0) -11.58%,
+      #7cc139 84.85%);
   border-radius: 20px;
 }
 
@@ -265,6 +266,7 @@
 .card:hover .cardImage {
   transform: translateY(-10px);
 }
+
 .navButton {
   position: absolute;
   top: 50%;
@@ -336,10 +338,14 @@
   border-radius: 50%;
   background: rgba(18, 205, 212, 0.08);
   display: flex;
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
-  width: 60px; /* Ensure fixed width */
-  height: 60px; /* Ensure fixed height */
+  align-items: center;
+  /* Center vertically */
+  justify-content: center;
+  /* Center horizontally */
+  width: 60px;
+  /* Ensure fixed width */
+  height: 60px;
+  /* Ensure fixed height */
 }
 
 .whyImgSection img {
@@ -362,9 +368,11 @@
   font-size: 1.5rem;
   line-height: 137%;
 }
+
 .whyTextSection {
   width: 70%;
 }
+
 .reason p {
   color: #666;
   font-family: "Roboto";
@@ -511,9 +519,11 @@
   padding: 0rem 4rem;
   user-select: none;
 }
+
 .contactUs {
   background-color: #f5f5f5;
 }
+
 .faqSection,
 .contactUsSection,
 .appointmentSection {
@@ -578,23 +588,28 @@
   border-radius: 0px 0px 5px 5px;
   padding: 0 1rem;
 }
+
 .faqAnswerColor {
   background: #e7f8f8;
   border-radius: 5px 5px 0px 0px !important;
 }
+
 .faqAnswer.active {
-  max-height: 200px; /* Adjust this value based on your content height */
+  max-height: 200px;
+  /* Adjust this value based on your content height */
   padding: 1rem 5.5rem;
 }
 
 .iconFac {
   margin-right: 0.5rem;
 }
+
 .contactUsInfo {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+
 .contactUsInfoImage,
 .contactUsInfoData {
   flex: 1 1 50%;
@@ -606,6 +621,7 @@
   display: flex;
   align-items: center;
 }
+
 .contactUsInfoDataLocation {
   display: flex;
   flex-direction: row;
@@ -613,6 +629,7 @@
   margin-bottom: 1.5rem;
   cursor: pointer;
 }
+
 .contactUsBgIcon {
   margin-right: 1rem;
   padding: 10px;
@@ -621,13 +638,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px; /* Ensure fixed width */
-  height: 50px; /* Ensure fixed height */
+  width: 50px;
+  /* Ensure fixed width */
+  height: 50px;
+  /* Ensure fixed height */
 }
+
 .contactUsBgIcon img {
   width: 100%;
   height: 100%;
 }
+
 .locationContent {
   font-family: "Roboto";
   font-style: normal;
@@ -653,6 +674,7 @@
   max-width: 70%;
   /* margin: 0 4rem; */
 }
+
 .inactive {
   font-family: "Roboto";
   font-style: normal;
@@ -663,6 +685,7 @@
 
   color: #b5b3b3;
 }
+
 .appointmentForm {
   display: flex;
   flex-direction: column;
@@ -670,6 +693,28 @@
 
 .formGroup {
   margin-bottom: 0.5rem;
+}
+
+.formGroup2 {
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
+.formGroup2 label {
+  display: block;
+  /* margin-bottom: 0.5rem; */
+  text-align: left;
+  font-family: "Roboto";
+  text-wrap: nowrap;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1.4rem;
+  /* line-height: 0px; */
+  margin-bottom: 0.2rem;
+  color: #475569;
 }
 
 .formGroup label {
@@ -684,9 +729,11 @@
   margin-bottom: 0.2rem;
   color: #475569;
 }
+
 .required {
   color: #ea4335;
 }
+
 .formGroup input,
 .formGroup select,
 .formGroup textarea {
@@ -710,6 +757,33 @@
 .formGroup input:focus,
 .formGroup select:focus,
 .formGroup textarea:focus {
+  border-color: #2196f3;
+  outline: none;
+}
+
+.formGroup2 input,
+.formGroup2 select,
+.formGroup2 textarea {
+  /* width: 100%; */
+  /* padding: 0.4rem 1rem; */
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2rem;
+  min-height: 47px;
+  line-height: 30px;
+  /* identical to box height */
+
+  color: #000000;
+
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+}
+
+.formGroup2 input:focus,
+.formGroup2 select:focus,
+.formGroup2 textarea:focus {
   border-color: #2196f3;
   outline: none;
 }
@@ -814,6 +888,7 @@
   align-items: center;
   margin-bottom: 1.5rem;
 }
+
 .formGroup {
   margin-bottom: 15px;
 }
@@ -894,9 +969,11 @@
 
   color: #ffffff;
 }
+
 .formGroup textarea {
   resize: none;
 }
+
 .bgColorFooter {
   padding: 10px;
   background: rgba(18, 205, 212, 0.08);
@@ -908,6 +985,7 @@
   justify-content: center;
   margin-right: 1rem;
 }
+
 .bgColorFooter img {
   width: 100%;
   height: 100%;
@@ -970,11 +1048,13 @@
 }
 
 @media (max-width: 768px) {
+
   .formGroup input,
   .formGroup select,
   .formGroup textarea {
     font-size: 22px;
   }
+
   .inactive {
     font-size: 24px;
   }
@@ -986,6 +1066,7 @@
   .testimonialsSection h2 {
     font-size: 2.2rem;
   }
+
   .copyright,
   .bottomColumn a,
   .bottomColumn p,
@@ -994,23 +1075,29 @@
   .locationContent {
     font-size: 1.2rem;
   }
+
   .formGroup label {
     font-size: 14px;
   }
+
   .contactItem p {
     width: 70%;
     text-align: left;
   }
+
   .submitButton {
     margin: 0 0;
     font-size: 22px;
   }
+
   .formContainer {
     max-width: 100%;
   }
+
   .contactUsInfo {
     flex-direction: column;
   }
+
   .faq,
   .contactUs,
   .appointment,
@@ -1018,50 +1105,61 @@
   .copyright {
     padding: 2rem 2rem;
   }
+
   .contactUsInfoData {
     margin-top: 2rem;
   }
+
   .faqQuestion {
     flex-direction: column-reverse;
     font-size: 1.5rem;
   }
+
   .navLink:first-child {
     margin-top: 2rem;
   }
+
   .navLink:last-child {
     margin-bottom: 2rem;
   }
+
   .faqAnswer {
     padding: 0rem 1rem !important;
     font-size: 1.4rem;
   }
+
   .testimonial {
     flex: 1 1 100%;
     max-width: 100%;
     text-align: center;
   }
+
   .reason p,
   .reason h3 {
     font-size: 22px;
   }
+
   .reason {
     flex: 1 1 100%;
     max-width: 100%;
     text-align: center;
     flex-direction: column;
   }
+
   .sliderContainer {
     padding: 0;
   }
 
   .card {
-    flex: 0 0 calc(100% - 2rem); /* Show only 1 card on mobile */
+    flex: 0 0 calc(100% - 2rem);
+    /* Show only 1 card on mobile */
     margin: 0 1rem;
   }
 
   .navButton {
     padding: 0.5rem 0.5rem;
   }
+
   .heroTitle,
   .aboutTitle {
     font-size: 2.2rem;
@@ -1072,26 +1170,32 @@
   .cardDescription {
     font-size: 1.25rem;
   }
+
   .main,
   .whyUsSection {
     height: 100%;
     padding-bottom: 2rem;
     padding-inline: 2rem;
   }
+
   .heroButton {
     font-size: 16px;
     float: calc(100%);
   }
+
   .header,
   .about {
     padding: 1rem 2rem;
   }
+
   .about {
     padding: 1rem;
   }
+
   .logo {
     display: none;
   }
+
   .nav {
     position: absolute;
     top: 0;

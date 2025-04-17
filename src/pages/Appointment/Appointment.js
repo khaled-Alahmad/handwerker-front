@@ -11,6 +11,8 @@ const Appointment = () => {
   const [canSubmit, setCanSubmit] = useState(true);
   const [selectedImages, setSelectedImages] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
+  const [appointmentType, setAppointmentType] = useState("individual");
+  const [useCustomerAddress, setUseCustomerAddress] = useState(false);
 
   useEffect(() => {
     if (!canSubmit) {
@@ -51,11 +53,6 @@ const Appointment = () => {
     const date = event.target.customer_date.value;
     const timeStart = event.target.customer_date_start.value;
     const timeEnd = event.target.customer_date_end.value;
-
-    // console.log("Datum:", date);
-    // console.log("Start Time:", timeStart);
-    // console.log("End Time:", timeEnd);
-
     if (!date || !timeStart || !timeEnd) {
       toast.error("Bitte füllen Sie alle erforderlichen Felder aus.");
       return;
@@ -69,14 +66,28 @@ const Appointment = () => {
 
     formData.set("customer_date", customerDateTimeStart);
     formData.set("customer_date_end", customerDateTimeEnd);
-    formData.set("type", "individual");
+    formData.set("type", appointmentType);
     formData.set("gender", "male");
+
+    if (appointmentType === "company") {
+      formData.set("customer_address", useCustomerAddress)
+      formData.set("work_address", JSON.stringify({
+        customer_address: useCustomerAddress,
+        city: event.target.work_state?.value || "",
+        address: event.target.work_address?.value || "",
+        zip_code: event.target.work_zip_code?.value || "",
+      }));
+    }
 
 
     selectedImages.forEach((image, i) => {
       formData.append(`images[${i}]`, image);
     });
-
+    // add log formData
+    // Log FormData entries
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + ': ' + pair[1]);
+    }
     try {
       const response = await axios
         .post(
@@ -88,18 +99,23 @@ const Appointment = () => {
             },
           }
         )
-        .then((res) => toast.success("Termin erfolgreich vereinbart!"))
+        .then((res) => {
+
+
+
+          toast.success("Termin erfolgreich vereinbart!")
+        })
         .catch((err) => {
           console.log(err);
           toast.error("Error!");
         });
-
       console.log("Response:", response);
       event.target.reset(); // Clear the form data
       setCanSubmit(false); // Disable form submission for 1 minute
       router.push("/#top");
       setSelectedImages([]);
       setImagePreviews([]);
+
     } catch (error) {
       console.error(
         "Error:",
@@ -118,6 +134,106 @@ const Appointment = () => {
       <div className={styles.appointmentContainer}>
         <div className={styles.formContainer}>
           <form className={styles.appointmentForm} onSubmit={handleSubmit}>
+
+            <div className={styles.formGroup}>
+              <label htmlFor="type">Typ<span className={styles.required}> *</span></label>
+              <select
+                id="type"
+                name="type"
+                value={appointmentType}
+                onChange={(e) => setAppointmentType(e.target.value)}
+                required
+              >
+                <option value="individual">Privat</option>
+                <option value="company">Firma</option>
+              </select>
+            </div>
+            {appointmentType === "company" && (
+              <>
+                <div className={styles.formGroup}>
+                  <label htmlFor="invoice_number">
+                    Rechnungsnummer
+                    <span className={styles.required}> *</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="invoice_number"
+                    name="invoice_number"
+                    required
+                    placeholder="Rechnungsnummer"
+                  />
+                </div>
+
+                <div className={styles.formGroup2}>
+                  <label >
+                    Arbeitsadresse gleich wie Kundenadresse
+                  </label>
+                  <input
+                    type="checkbox"
+                    style={{ marginLeft: "1rem", height: "20px", width: "20px", marginTop: "0.5rem", marginBottom: "0.5rem", marginLeft: "1rem", marginRight: "1rem", border: "1px solid #ccc", borderRadius: "50%", backgroundColor: "#fff", cursor: "pointer", transition: "background-color 0.3s", }}
+                    checked={useCustomerAddress}
+                    onChange={(e) => setUseCustomerAddress(e.target.checked)}
+                  />
+                </div>
+
+                {useCustomerAddress && (
+                  <>
+                    <div className={styles.formGroup}>
+                      <label htmlFor="work_address">
+                        Arbeitsadresse
+                        <span className={styles.required}> *</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="work_address"
+                        name="work_address"
+                        required
+                        placeholder="Arbeitsadresse"
+                      />
+                    </div>
+                    <div className={styles.formGroup}>
+                      <label htmlFor="work_state">
+                        Arbeitsstadt
+                        <span className={styles.required}> *</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="work_state"
+                        name="work_state"
+                        required
+                        placeholder="Stadt"
+                      />
+                    </div>
+                    <div className={styles.formGroup}>
+                      <label htmlFor="work_zip_code">
+                        Arbeits-PLZ
+                        <span className={styles.required}> *</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="work_zip_code"
+                        name="work_zip_code"
+                        required
+                        placeholder="PLZ"
+                      />
+                    </div>
+                    <div className={styles.formGroup}>
+                      <label htmlFor="work_country">
+                        Arbeitsland
+                        <span className={styles.required}> *</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="work_country"
+                        name="work_country"
+                        required
+                        placeholder="Land"
+                      />
+                    </div>
+                  </>
+                )}
+              </>
+            )}
             <div className={styles.formGroup}>
               <label htmlFor="first_name">
                 Vorname
@@ -167,7 +283,7 @@ const Appointment = () => {
                 id="email"
                 name="email"
                 placeholder="Email"
-                // required
+              // required
               />
             </div>
             <div className={styles.formGroup}>
@@ -235,7 +351,7 @@ const Appointment = () => {
                 placeholder="Strabe, Hausnummer"
               />
             </div>
-            <div className={styles.formGroup}>
+            {/* <div className={styles.formGroup}>
               <label htmlFor="city">
                 Straße
                 <span className={styles.required}> *</span>
@@ -247,16 +363,16 @@ const Appointment = () => {
                 required
                 placeholder="straße"
               />
-            </div>
+            </div> */}
             <div className={styles.formGroup}>
-              <label htmlFor="state">
+              <label htmlFor="city">
                 Stadt
                 <span className={styles.required}> *</span>
               </label>
               <input
                 type="text"
-                id="state"
-                name="state"
+                id="city"
+                name="city"
                 required
                 placeholder="Stadt"
               />
