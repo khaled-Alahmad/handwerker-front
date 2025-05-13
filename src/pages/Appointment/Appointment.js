@@ -150,7 +150,7 @@ const Appointment = () => {
             </div>
             {appointmentType === "company" && (
               <>
-                <div className={styles.formGroup}>
+                {/* <div className={styles.formGroup}>
                   <label htmlFor="invoice_number">
                     Rechnungsnummer
                     <span className={styles.required}> *</span>
@@ -162,11 +162,11 @@ const Appointment = () => {
                     required
                     placeholder="Rechnungsnummer"
                   />
-                </div>
+                </div> */}
 
                 <div className={styles.formGroup2}>
                   <label >
-                    Arbeitsadresse gleich wie Kundenadresse
+                    Auftrag ort
                   </label>
                   <input
                     type="checkbox"
