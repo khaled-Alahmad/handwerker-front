@@ -53,69 +53,67 @@ const Appointment = () => {
     const date = event.target.customer_date.value;
     const timeStart = event.target.customer_date_start.value;
     const timeEnd = event.target.customer_date_end.value;
+
     if (!date || !timeStart || !timeEnd) {
       toast.error("Bitte füllen Sie alle erforderlichen Felder aus.");
       return;
     }
 
     setIsFormSubmitting(true);
-    const formData = new FormData(event.target);
 
     const customerDateTimeStart = `${date} ${timeStart}:00`;
     const customerDateTimeEnd = `${date} ${timeEnd}:00`;
 
-    formData.set("customer_date", customerDateTimeStart);
-    formData.set("customer_date_end", customerDateTimeEnd);
-    formData.set("type", appointmentType);
-    formData.set("gender", "male");
+    // إعداد كائن البيانات
+    const data = {
+      customer_date: customerDateTimeStart,
+      customer_date_end: customerDateTimeEnd,
+
+      type: appointmentType,
+      gender: "male",
+      customer_name: event.target.customer_name?.value || "",
+      customer_email: event.target.customer_email?.value || "",
+      first_name: event.target.first_name?.value || "",
+      last_name: event.target.last_name?.value || "",
+      phone: event.target.phone?.value || "",
+      city: event.target.city?.value || "",
+      zip_code: event.target.zip_code?.value || "",
+
+      customer_phone: event.target.customer_phone?.value || "",
+      customer_address: event.target.customer_address?.value || "",
+      title: event.target.description?.value || "",
+    };
 
     if (appointmentType === "company") {
-      formData.set("customer_address", useCustomerAddress)
-      formData.set("work_address", JSON.stringify({
+      data.customer_address = useCustomerAddress;
+      data.work_address = {
         customer_address: useCustomerAddress,
         city: event.target.work_state?.value || "",
         address: event.target.work_address?.value || "",
         zip_code: event.target.work_zip_code?.value || "",
-      }));
+      };
     }
 
+    // طباعة البيانات في الكونسول لأغراض التصحيح
+    console.log("Sending JSON:", data);
 
-    selectedImages.forEach((image, i) => {
-      formData.append(`images[${i}]`, image);
-    });
-    // add log formData
-    // Log FormData entries
-    for (let pair of formData.entries()) {
-      console.log(pair[0] + ': ' + pair[1]);
-    }
     try {
-      const response = await axios
-        .post(
-          "https://backend.ihr-handwerkers.com/api/orders/send_form",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        )
-        .then((res) => {
+      const response = await axios.post(
+        "https://backend.ihr-handwerkers.com/api/orders/send_form",
+        JSON.stringify(data),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-
-
-          toast.success("Termin erfolgreich vereinbart!")
-        })
-        .catch((err) => {
-          console.log(err);
-          toast.error("Error!");
-        });
-      console.log("Response:", response);
-      event.target.reset(); // Clear the form data
-      setCanSubmit(false); // Disable form submission for 1 minute
+      toast.success("Termin erfolgreich vereinbart!");
+      event.target.reset(); // إعادة تعيين النموذج
+      setCanSubmit(false); // تعطيل الإرسال لمدة دقيقة
       router.push("/#top");
       setSelectedImages([]);
       setImagePreviews([]);
-
     } catch (error) {
       console.error(
         "Error:",
@@ -418,7 +416,7 @@ const Appointment = () => {
                 placeholder="Beschreibung"
               ></textarea>
             </div>
-            <div className={styles.formGroup}>
+            {/* <div className={styles.formGroup}>
               <label htmlFor="images">Bilder</label>
               <input
                 type="file"
@@ -432,8 +430,8 @@ const Appointment = () => {
               <label htmlFor="images" className={styles.customFileInput}>
                 Bilder auswählen...
               </label>
-            </div>
-            <div className={styles.imagePreviewContainer}>
+            </div> */}
+            {/* <div className={styles.imagePreviewContainer}>
               {imagePreviews.map((preview, index) => (
                 <div key={index} className={styles.imagePreview}>
                   <img src={preview} alt={`Preview ${index}`} />
@@ -446,7 +444,7 @@ const Appointment = () => {
                   </button>
                 </div>
               ))}
-            </div>
+            </div> */}
             <button
               type="submit"
               className={styles.heroButton}
