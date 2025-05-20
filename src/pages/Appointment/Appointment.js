@@ -71,21 +71,21 @@ const Appointment = () => {
 
       type: appointmentType,
       gender: "male",
-      customer_name: event.target.customer_name?.value || "",
-      customer_email: event.target.customer_email?.value || "",
+      email: event.target.email?.value || "",
+      address: event.target.address?.value || "",
+      country: event.target.country?.value || "",
+
       first_name: event.target.first_name?.value || "",
       last_name: event.target.last_name?.value || "",
       phone: event.target.phone?.value || "",
       city: event.target.city?.value || "",
       zip_code: event.target.zip_code?.value || "",
 
-      customer_phone: event.target.customer_phone?.value || "",
-      customer_address: event.target.customer_address?.value || "",
       title: event.target.description?.value || "",
     };
+    data.customer_address = !useCustomerAddress;
 
     if (appointmentType === "company") {
-      data.customer_address = useCustomerAddress;
       data.work_address = {
         customer_address: useCustomerAddress,
         city: event.target.work_state?.value || "",
