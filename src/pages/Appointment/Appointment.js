@@ -76,6 +76,7 @@ const Appointment = () => {
       country: event.target.country?.value || "",
 
       first_name: event.target.first_name?.value || "",
+      company_name: event.target.company_name?.value || "",
       last_name: event.target.last_name?.value || "",
       phone: event.target.phone?.value || "",
       city: event.target.city?.value || "",
@@ -86,6 +87,7 @@ const Appointment = () => {
     data.customer_address = !useCustomerAddress;
 
     if (appointmentType === "company") {
+
       data.work_address = {
         customer_address: useCustomerAddress,
         city: event.target.work_state?.value || "",
@@ -161,6 +163,21 @@ const Appointment = () => {
                     placeholder="Rechnungsnummer"
                   />
                 </div> */}
+                {/* company_name */}
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="company_name">
+                    Firmenname
+                    <span className={styles.required}> *</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="company_name"
+                    name="company_name"
+                    required
+                    placeholder="Firmenname"
+                  />
+                </div>
 
                 <div className={styles.formGroup2}>
                   <label >
